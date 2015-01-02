@@ -60,11 +60,12 @@ void add_entry(int from_hid, uint8_t from_spbits, int to_hid, uint8_t to_spbits)
 	}else{
 		int element_depth=0;
 
-		while(p->next!=NULL){
-			if(p->from_hid==from_hid && p->from_spbits==from_spbits)
+		for(;;){
 				return;
-			p=p->next;
 			element_depth++;
+			if(p->next==NULL)
+				break;
+			p=p->next;
 		}
 		if(element_depth>max_element_depth)
 			max_element_depth=element_depth;
