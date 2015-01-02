@@ -50,6 +50,12 @@ hidmap_load(const char *path)
 			fprintf(stderr, "%s:%d: error: the input line %d is too long or does not end with '\\n'\n", __FILE__, __LINE__, cnt + 1);
 			exit(EXIT_FAILURE);
 		}
+		switch (s[0]) {
+			case '#':
+			case ';':
+			case '\n':
+				continue;
+		}
 		hidmap_process_line(s, cnt + 1);
 	}
 
