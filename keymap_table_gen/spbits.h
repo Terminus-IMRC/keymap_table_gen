@@ -1,0 +1,18 @@
+#ifndef __SPBITS_H_INCLUDED__
+#define __SPBITS_H_INCLUDED__
+
+#define SPBITS_NONE 0
+#define SPBITS_LCTRL (1<<0)
+#define SPBITS_LSHIFT (1<<1)
+#define SPBITS_LALT (1<<2)
+#define SPBITS_LGUI (1<<3)
+#define SPBITS_RCTRL (1<<4)
+#define SPBITS_RSHIFT (1<<5)
+#define SPBITS_RALT (1<<6)
+#define SPBITS_RGUI (1<<7)
+#define SPBITS_CTRL SPBITS_LCTRL
+#define SPBITS_SHIFT SPBITS_LSHIFT
+#define SPBITS_ALT SPBITS_LALT
+#define SPBITS_GUI SPBITS_LGUI
+
+#endif /* __SPBITS_H_INCLUDED__ */

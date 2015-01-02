@@ -5,6 +5,7 @@
 #include "defkeymap_table_jp106.h"
 #include "HIDKeyboard.h"
 #include "keycode2hidusage_table.h"
+#include "spbits.h"
 
 struct keymap_node_t{
 	uint8_t from_hid, to_hid;
@@ -16,20 +17,6 @@ typedef struct keymap_node_t keymap_node_t;
 
 keymap_node_t *knodes[0xff];
 int max_element_depth=0;
-
-#define SPBITS_NONE 0
-#define SPBITS_LCTRL (1<<0)
-#define SPBITS_LSHIFT (1<<1)
-#define SPBITS_LALT (1<<2)
-#define SPBITS_LGUI (1<<3)
-#define SPBITS_RCTRL (1<<4)
-#define SPBITS_RSHIFT (1<<5)
-#define SPBITS_RALT (1<<6)
-#define SPBITS_RGUI (1<<7)
-#define SPBITS_CTRL SPBITS_LCTRL
-#define SPBITS_SHIFT SPBITS_LSHIFT
-#define SPBITS_ALT SPBITS_LALT
-#define SPBITS_GUI SPBITS_LGUI
 
 void entry_init()
 {
