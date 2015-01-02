@@ -6,6 +6,7 @@
 #include "HIDKeyboard.h"
 #include "keycode2hidusage_table.h"
 #include "spbits.h"
+#include "hidmap.h"
 
 struct keymap_node_t{
 	uint8_t from_hid, to_hid;
@@ -51,7 +52,7 @@ void add_entry(int from_hid, uint8_t from_spbits, int to_hid, uint8_t to_spbits)
 	if(from_hid==0)
 		return;
 
-	e=(from_hid+from_spbits)%0xff;
+	e=(from_hid+(from_spbits&SPBITS_MODIFIER_MASK))%0xff;
 
 	p=knodes[e];
 	if(p==NULL){
@@ -61,6 +62,7 @@ void add_entry(int from_hid, uint8_t from_spbits, int to_hid, uint8_t to_spbits)
 		int element_depth=0;
 
 		for(;;){
+			if(p->from_hid==from_hid && (p->from_spbits&SPBITS_MODIFIER_MASK)==(from_spbits&SPBITS_MODIFIER_MASK))
 				return;
 			element_depth++;
 			if(p->next==NULL)
@@ -159,9 +161,24 @@ void process_table(uint16_t defmap[NR_KEYS], uint16_t map[NR_KEYS], uint8_t from
 	return;
 }
 				
+void set_knodes_from_hidmap()
+{
+	struct hidmap_t *p=hidmap;
+
+	while(p!=NULL){
+		add_entry(p->from_hid, p->from_spbits, p->to_hid, p->to_spbits);
+		p=p->next;
+	}
+
+	return;
+}
+
 int main()
 {
 	entry_init();
+
+	hidmap_load("iOS.hidmap");
+	set_knodes_from_hidmap();
 
 	process_table(plain_map, plain_map_jp106, SPBITS_NONE);
 	process_table(shift_map, shift_map_jp106, SPBITS_SHIFT);
