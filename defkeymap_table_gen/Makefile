@@ -1,4 +1,4 @@
-OBJS:=loadkeys.o loadkeys.analyze.o getfd.o ksyms.o xmalloc.o findfile.o
+OBJS:=loadkeys.o loadkeys.analyze.o ksyms.o xmalloc.o findfile.o
 
 CC:=gcc
 RM:=rm -f
@@ -7,7 +7,7 @@ LEX:=lex
 
 all: loadkeys
 
-loadkeys: loadkeys.o loadkeys.analyze.o getfd.o ksyms.o xmalloc.o findfile.o
+loadkeys: loadkeys.o loadkeys.analyze.o ksyms.o xmalloc.o findfile.o
 
 .PHONY: clean
 clean:
