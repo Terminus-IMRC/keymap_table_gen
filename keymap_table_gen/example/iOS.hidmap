@@ -1,0 +1,27 @@
+# map ctrl + esc to home screen
+0x29	ctrl	consumer	0x01	0x00
+
+# map hankaku_zenkaku to gui + space (IME)
+0x35	none	output	0x2c	gui
+
+# map F3 to search
+0x3c	none	consumer	0x04	0x00
+# map F5 to keyboard toggle
+0x3e	none	consumer	0x08	0x00
+# map F10 to mute
+0x43	none	consumer	0x40	0x00
+# map F11 to vol up
+0x44	none	consumer	0x20	0x00
+# map F12 to vol down
+0x45	none	consumer	0x10	0x00
+
+# map gui + z to undo
+0x1d	gui	output	0x1d	gui
+# map gui + x to cut
+0x1b	gui	output	0x1b	gui
+# map gui + c to copy
+0x06	gui	output	0x06	gui
+# map gui + v to paste
+0x19	gui	output	0x19	gui
+# map gui + a to select all
+0x04	gui	output	0x04	gui
